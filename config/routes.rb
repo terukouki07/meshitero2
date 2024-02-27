@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
     resource :favorite, only: [:create, :destroy]
   end
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resources :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#follow', as: 'followings'
+    get 'followers' => 'relationships#unfollow', as: 'unfollows'
+  end
   root to: 'homes#top'
   get "homes/about" => "homes#about", as: "about"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
