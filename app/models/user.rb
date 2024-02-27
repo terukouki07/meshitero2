@@ -17,6 +17,18 @@ class User < ApplicationRecord
   #フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
   
+  def follow(user)
+    active_relationhsips.create(followed_id: user.id)
+  end
+  
+  def unfollow(user)
+    active_relationships.find_by(followed_id: user.id).destroy
+  end
+  
+  def following?(user)
+    followings.include?(user)
+  end
+  
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
