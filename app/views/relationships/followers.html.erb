@@ -1,0 +1,6 @@
+<p>フォロワー一覧</p>
+<% if @users.exists? %>
+  <%= @users.name %>
+<% else %>
+  ユーザーはいません
+<% end %>

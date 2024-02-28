@@ -5,6 +5,7 @@
     <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
   <% end %>
   <%= render 'btn', user: @user %>
+  <%= render 'index', user: @user %>
 </div>
 
 <%= render 'post_images/list', post_images: @post_images %>

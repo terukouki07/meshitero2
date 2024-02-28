@@ -1,0 +1,6 @@
+<p>フォロー一覧</p>
+<% if @users.exists? %>
+  <%= @users.name %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
