@@ -18,4 +18,19 @@ class PostImage < ApplicationRecord
 
   validates :shop_name, presence: true
   validates :image, presence: true
+  
+  
+  def self.looks(search, word)
+    if search == "perfect"
+      @post_image = PostImage.where("shop_name LIKE?", "#{word}")
+    elsif search == "forward"
+      @post_image = PostImage.where("shop_name LIKE?" ,"#{word}%")
+    elsif search == "backward"
+      @post_image = PostImage.where("shop_name LIKE?", "%#{word}")
+    elsif search == "partial"
+      @post_image = PostImage.where("shop_name LIKE?", "%#{word}%")
+    else
+      @post_image = PostImage.all
+    end
+  end
 end
