@@ -1,0 +1,9 @@
+<% if @range == "User" %>
+  <% @records.each do |user| %>
+    <%= user.name %>
+  <% end %>
+<% else %>
+  <% @records.each do |post_image| %>
+    <%= post_image.shop_name %>
+  <% end %>
+<% end %>
